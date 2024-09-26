@@ -74,4 +74,15 @@ export type SearchTestResponse = {
   queryExtensionModel?: string;
 };
 
+export type RetrievalProps = {
+  datasetIds: string[];
+  text: string;
+  [NodeInputKeyEnum.datasetSimilarity]?: number;
+  [NodeInputKeyEnum.datasetMaxTokens]?: number;
+  [NodeInputKeyEnum.datasetSearchMode]?: `${DatasetSearchModeEnum}`;
+  [NodeInputKeyEnum.datasetSearchUsingReRank]?: boolean;
+  [NodeInputKeyEnum.datasetSearchUsingExtensionQuery]?: boolean;
+  [NodeInputKeyEnum.datasetSearchExtensionModel]?: string;
+  [NodeInputKeyEnum.datasetSearchExtensionBg]?: string;
+};
 /* =========== training =========== */
