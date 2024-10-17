@@ -175,6 +175,8 @@ export type DatasetCollectionItemType = CollectionWithDatasetType & {
   sourceId?: string;
   file?: DatasetFileSchema;
   permission: DatasetPermission;
+  dataAmount?: number;
+  trainingAmount?: number;
 };
 
 /* ================= data ===================== */

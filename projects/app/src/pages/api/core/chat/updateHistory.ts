@@ -12,6 +12,7 @@ async function handler(req: ApiRequestProps<UpdateHistoryProps>, res: NextApiRes
   const { appId, chatId, title, customTitle, top } = req.body;
   await authChatCrud({
     req,
+    authApiKey: true,
     authToken: true,
     authApiKey: true,
     ...req.body,

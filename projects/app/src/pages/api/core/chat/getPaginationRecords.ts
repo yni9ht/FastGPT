@@ -46,6 +46,7 @@ async function handler(
     MongoApp.findById(appId, 'type').lean(),
     authChatCrud({
       req,
+      authApiKey: true,
       authToken: true,
       authApiKey: true,
       ...req.body,

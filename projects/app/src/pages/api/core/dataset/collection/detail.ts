@@ -11,6 +11,8 @@ import { ReadPermissionVal } from '@fastgpt/global/support/permission/constant';
 import { DatasetCollectionItemType } from '@fastgpt/global/core/dataset/type';
 import { CommonErrEnum } from '@fastgpt/global/common/error/code/common';
 import { collectionTagsToTagLabel } from '@fastgpt/service/core/dataset/collection/utils';
+import { MongoDatasetTraining } from '@fastgpt/service/core/dataset/training/schema';
+import { MongoDatasetData } from '@fastgpt/service/core/dataset/data/schema';
 
 async function handler(req: NextApiRequest): Promise<DatasetCollectionItemType> {
   const { id } = req.query as { id: string };
@@ -20,7 +22,7 @@ async function handler(req: NextApiRequest): Promise<DatasetCollectionItemType> 
   }
 
   // 凭证校验
-  const { collection, permission } = await authDatasetCollection({
+  const { collection, permission, teamId } = await authDatasetCollection({
     req,
     authToken: true,
     authApiKey: true,
@@ -40,6 +42,12 @@ async function handler(req: NextApiRequest): Promise<DatasetCollectionItemType> 
       datasetId: collection.datasetId._id,
       tags: collection.tags
     }),
+    dataAmount: await MongoDatasetData.countDocuments({
+      teamId: teamId,
+      datasetId: collection.datasetId._id,
+      collectionId: id
+    }),
+    trainingAmount: await MongoDatasetTraining.countDocuments({ collectionId: id, teamId }),
     permission,
     file
   };

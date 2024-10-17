@@ -26,7 +26,8 @@ async function handler(req: NextApiRequest) {
 
     datasetSearchUsingExtensionQuery = true,
     datasetSearchExtensionModel,
-    datasetSearchExtensionBg = ''
+    datasetSearchExtensionBg = '',
+    collectionFilterMatch = ''
   } = req.body as RetrievalProps;
 
   if (!datasetIds || !text || datasetIds.length === 0) {
@@ -66,7 +67,9 @@ async function handler(req: NextApiRequest) {
     similarity,
     datasetIds: datasetIds,
     searchMode,
-    usingReRank: usingReRank && (await checkTeamReRankPermission(teamId))
+    usingReRank: usingReRank && (await checkTeamReRankPermission(teamId)),
+    // collectionFilterMatch to string
+    collectionFilterMatch: JSON.stringify(collectionFilterMatch)
   });
 
   // push bill

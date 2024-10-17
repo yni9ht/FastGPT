@@ -84,5 +84,6 @@ export type RetrievalProps = {
   [NodeInputKeyEnum.datasetSearchUsingExtensionQuery]?: boolean;
   [NodeInputKeyEnum.datasetSearchExtensionModel]?: string;
   [NodeInputKeyEnum.datasetSearchExtensionBg]?: string;
+  [NodeInputKeyEnum.collectionFilterMatch]?: string;
 };
 /* =========== training =========== */

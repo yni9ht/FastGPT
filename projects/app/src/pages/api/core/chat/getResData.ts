@@ -36,6 +36,7 @@ async function handler(
   try {
     await authChatCrud({
       req,
+      authApiKey: true,
       authToken: true,
       authApiKey: true,
       ...req.query,

@@ -28,6 +28,7 @@ async function handler(
   const [{ app, tmbId }, chat] = await Promise.all([
     authApp({
       req,
+      authApiKey: true,
       authToken: true,
       authApiKey: true,
       appId,

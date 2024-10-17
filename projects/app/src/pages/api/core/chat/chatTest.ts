@@ -72,9 +72,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     /* user auth */
     const [{ app }, { teamId, tmbId }] = await Promise.all([
-      authApp({ req, authToken: true, appId, per: ReadPermissionVal }),
+      authApp({ req, authApiKey: true, authToken: true, appId, per: ReadPermissionVal }),
       authCert({
         req,
+        authApiKey: true,
         authToken: true
       })
     ]);
