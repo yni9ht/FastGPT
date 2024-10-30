@@ -43,7 +43,7 @@ async function handler(req: ApiRequestProps<CreateAppBody>) {
   }
 
   // 上限校验
-  await checkTeamAppLimit(teamId);
+  // await checkTeamAppLimit(teamId);
   const tmb = await MongoTeamMember.findById({ _id: tmbId });
   const user = await MongoUser.findById({ _id: tmb?.userId });
 

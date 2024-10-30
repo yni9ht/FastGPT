@@ -43,7 +43,7 @@ async function handler(
   }
 
   // check limit
-  await checkTeamDatasetLimit(teamId);
+  // await checkTeamDatasetLimit(teamId);
 
   const { _id } = await MongoDataset.create({
     ...parseParentIdInMongo(parentId),
