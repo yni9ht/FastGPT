@@ -9,8 +9,8 @@ const isLLMNode = (item: ChatHistoryItemResType) =>
 export function transformPreviewHistories(histories: ChatItemType[]): ChatItemType[] {
   return histories.map((item) => {
     return {
-      ...addStatisticalDataToHistoryItem(item),
-      responseData: undefined
+      ...addStatisticalDataToHistoryItem(item)
+      // responseData: undefined
     };
   });
 }
