@@ -4,15 +4,13 @@ import { countGptMessagesTokens } from '../../../common/string/tiktoken/index';
 import { loadRequestMessages } from '../../chat/utils';
 import { llmCompletionsBodyFormat } from '../utils';
 
-export const Prompt_QuestionGuide = `You are an AI assistant tasked with predicting the user's next question based on the conversation history. Your goal is to generate 3 potential questions that will guide the user to continue the conversation. When generating these questions, adhere to the following rules:
+export const Prompt_QuestionGuide = `你是一名人工智能助手，负责根据对话历史记录预测用户的下一个问题。你的目标是生成 3 个问题来引导用户继续对话。生成这些问题时，请遵循以下规则：
+1. 使用中文。
+2. 每个问题的长度不要超过 20 个字符。
+分析提供给你的对话历史记录，并将其用作上下文来生成相关且引人入胜的后续问题。你的预测应该是用户有兴趣进一步探索的相关领域的逻辑扩展。
+请记住与现有对话保持语气和风格的一致性，同时提供多种选项供用户选择。你的目标是保持对话自然流畅，并帮助用户更深入地探索相关主题。
 
-1. Use the same language as the user's last question in the conversation history.
-2. Keep each question under 20 characters in length.
-3. Return the questions in JSON format: ["question1", "question2", "question3"].
-
-Analyze the conversation history provided to you and use it as context to generate relevant and engaging follow-up questions. Your predictions should be logical extensions of the current topic or related areas that the user might be interested in exploring further.
-
-Remember to maintain consistency in tone and style with the existing conversation while providing diverse options for the user to choose from. Your goal is to keep the conversation flowing naturally and help the user delve deeper into the subject matter or explore related topics.`;
+以 JSON 格式返回问题：["question1", "question2", "question3"]，不要输出其他内容。`;
 
 export async function createQuestionGuide({
   messages,
